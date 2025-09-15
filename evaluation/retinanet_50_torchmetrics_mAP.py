@@ -60,8 +60,8 @@ class CocoRetinaNetDataset(CocoDetection):
         return img, coco_target
     
 
-val_img_folder = "/home/botlab/Documents/Anjali/openDET2/datasets/VisDrone_dataset/test_human"
-val_ann_file = "/home/botlab/Documents/Anjali/openDET2/datasets/VisDrone_dataset/annotations//.json"
+val_img_folder = "/home/anjali/Documents/Anjali/openDET2/datasets/VisDrone_dataset/test_human"
+val_ann_file = "/home/anjali/Documents/Anjali/openDET2/datasets/VisDrone_dataset/annotations//.json"
 
 val_dataset = CocoRetinaNetDataset(val_img_folder, val_ann_file, transforms=T.ToTensor())
 val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, num_workers=4, collate_fn=lambda x: list(zip(*x)))
@@ -98,7 +98,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 metric = MeanAveragePrecision()
 
 model_ft = get_model(NUM_CLASSES)
-model_ft.load_state_dict(torch.load("/home/botlab/Documents/Anjali/RetinaNet_torch/checkpoints_ACLS_mAP/best_ACLS_model_LPFT_epoch19.pth"))
+model_ft.load_state_dict(torch.load("/home/anjali/Documents/Anjali/RetinaNet_torch/checkpoints_ACLS_mAP/best_ACLS_model_LPFT_epoch19.pth"))
 model_ft.to(device)
 
 
